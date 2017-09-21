@@ -1,5 +1,15 @@
-<section ng-if= "!$ad.empty()">
-  <div ng-if="$ad.albom">
+<section ng-if= "$ad.albom">
+  
+  <h3> Albom: <strong> {{ $ad.albom.title }} </strong> </h3>
+
+  <div>
+    <input id="new-movie-name" type="text" ng-model="$ad.newMovieName" ng-change="$ad.newNameChange()"> 
+    <button type="button" class="btn btn-success" ng-class="{'disabled': $ad.incorectName }" ng-click="$ad.addMovie()">New movie</button>
+  </div>
+  
+  <br />
+
+  <div ng-if="!$ad.empty()">
     <table id="movies-table" ng-mouseleave="$ad.row=-1">
       <tr ng-mouseover="$ad.row=-1" >
         <th>#</th>
@@ -7,7 +17,8 @@
             ng-class="$ad.orderBy.indexOf(col) > -1 ? $ad.sortClass : 'sort-none'">{{ col | uppercase }}</th>
         <th>CONTROL</th>    
       </tr>
-      <h3> Albom: <strong> {{ $ad.albom.title }} </strong> </h3>
+ 
+
       <tr ng-repeat="movie in $ad.albom.list | orderBy: $ad.orderBy"
               ng-class-odd="'row-shadow'" ng-mouseover="$ad.row=$index" ng-click="$ad.selectMovie(movie)"
               ng-class="{'hover-row': $ad.row===$index, 'selected-row': $ad.selectedAlbom === movie}">
@@ -15,7 +26,7 @@
           <td class="text"><span>{{ movie.title }}</span></td>
           <td class="text"><span>{{ movie.about }}</span></td>
           <td>
-            <movie-rating value="movie.rating">
+            <movie-rating class="show-star" value="movie.rating">
               <span class="glyphicon glyphicon-star"></span>
             </movie-rating>
           </td>
@@ -35,10 +46,9 @@
         </td> 
       </tr>
     </table>
-    
-    <div>
-      <movie-list-edit content="$ad.editedMovie" on-close="$ad.close()" on-save="$ad.save()"></movie-list-edit>
-    </div>
-
   </div>
+
+  <movie-list-edit content="$ad.editedMovie"></movie-list-edit>
+  </br>
+  </br>
 </section>

@@ -7,16 +7,11 @@ angular.module('myAlbomsApp')
     controllerAs: '$ad',
     bindings: {
       albom: '=',
-      onClose: '&',
-      onSave: '&'
     }
   });
 
 function albomDetailController(albomsListService) {
   var self = this;
-
-  self.close = close;
-  self.save = save;
 
   self.orderBy = 'name';
   self.sortClass= 'sort-asc';
@@ -53,30 +48,15 @@ function albomDetailController(albomsListService) {
     return false
   }
 
+   function editMovie(ev, movie){
+      ev.stopPropagation();
+      self.editedMovie = movie;
+    }
+
   function selectMovie(movie) {
     self.editedMovie = undefined; 
     self.selectedMovie = movie;
-    self.selectedAlbom = albom;
   }
-
-  function editMovie(ev, movie){
-    ev.stopPropagation();
-    self.savedData = albomsListService.saveData(albom);  
-    self.editedMovie = self.selectedMovie = movie;
-  }
-
-  function close() {
-    if (self.editedMovie ){
-     // albomsListService.restoreData(self.savedData);
-     console.log('restore from', self.savedData )
-    }
-    self.editedAlbom = undefined;
-  }
-
-  function save() {
-    self.editedAlbom = undefined;
-  }
-
 
   function deleteMovie(movie){
     console.log('delete', movie);
@@ -91,9 +71,9 @@ function albomDetailController(albomsListService) {
 
   function addMovie(){
     console.log('add movie ', self.newMovieName);
-    //albomsListService.addAlbom(self.newAlbomName);
-    //self.newAlbomName = '';
-    //self.newNameChange();
+    albomsListService.addMovieToCurrentAlbom(self.newMovieName);
+    self.newMovieName = '';
+    self.newNameChange();
     //self.empty = false;
   }
 

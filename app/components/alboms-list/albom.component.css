@@ -39,6 +39,10 @@ table td.text span {
     max-width: 100%;
 }
 
+.big-input-field {
+    width: 100%;
+}
+
 .sortable {
     cursor: s-resize; /* down-arrow */
 }

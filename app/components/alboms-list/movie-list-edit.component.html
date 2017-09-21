@@ -1,20 +1,20 @@
 <div class='container' ng-if="$ctrl.content">
-  <div class='row'>
-    <label class='col-12 col-sm-1' for='movie-title-detail'> Title: </label>
-    <div class='col-12 col-sm-10'>
-      <input type="text" id="movie-title-detail" ng-model="$ctrl.content.title">
+   <div class='row'>
+    <label class='col-sm-1' for='movie-title-detail'> Title: </label>
+    <div class='col-sm-10'>
+      <input class='big-input-field' type="text" id="movie-title-detail" ng-model="$ctrl.content.title">
     </div>
-  </div>
-    <div class="row">
-      <label class='col-12 col-sm-1' for='movie-about-detail'> About: </label>  
-      <div class='col-12 col-sm-10'>
-         <input type="text" id='movie-about-detail' ng-model="$ctrl.content.about">
+   </div>
+   <div class="row">
+      <label class='col-sm-1' for='movie-about-detail'> About: </label>  
+      <div class='col-sm-10'>
+         <input class='big-input-field' type="text" id='movie-about-detail' ng-model="$ctrl.content.about">
       </div>   
    </div>
    <div class="row">
-      <label class='col-12 col-sm-1' for='movie-url-detail'> About: </label>  
-      <div class='col-12 col-sm-10'>
-         <input type="text" id='movie-url-detail' ng-model="$ctrl.content.url">
+      <label class='col-sm-1' for='movie-url-detail'> URL: </label>  
+      <div class='col-sm-10'>
+         <input class='big-input-field' type="text" id='movie-url-detail' ng-model="$ctrl.content.url">
       </div>   
    </div>
   <div class="row">
@@ -23,14 +23,5 @@
         <span uib-rating ng-model="$ctrl.content.rating" max="5" state-on="glyphicon-star" state-off="glyphicon-star-empty" aria-labelledby="custom-icons-1"></span>
      </div>
   </div>  
-
-  <div class="btn-group">
-    <button class="btn btn-default" ng-click="$ctrl.save()">
-      SAVE <span class="glyphicon glyphicon-save"></span>
-    </button>
-
-    <button class="btn btn-default" ng-click="$ctrl.close()">
-      DON'T SAVE <span class="glyphicon glyphicon-log-out"></span>
-    </button>
   </div>
 </div>

@@ -13,6 +13,7 @@
         self.restoreData = restoreData;
         self.deleteAlbom = deleteAlbom;
         self.addAlbom = addAlbom;
+        self.addMovieToCurrentAlbom = addMovieToCurrentAlbom;
 
 
         function getAlboms() {
@@ -65,7 +66,12 @@
         function addAlbom(name){
            self.alboms.push({title : name, rating: 0, list : [], size : 0});
         }
-
+        function addMovieToCurrentAlbom(name){
+          console.log('currant albom = ',   self.selectedAlbom);
+          self.selectedAlbom.list.push({title: name, rating:0});
+          self.selectedAlbom.size++;
+          console.log('currant albom = ',   self.selectedAlbom);
+        }
     }
 
 })();
