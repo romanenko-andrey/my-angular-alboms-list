@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="app/scss/style.scss">
+    <link rel="stylesheet" href="app/components/alboms-list/albom.component.css">
+</head>
+
+<body ng-app="myAlbomsApp">
+    
+    <my-header></my-header>
+ 
+    <div class='my-alboms-app'>
+        <ui-view></ui-view>
+    </div>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js""></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js""></script>
+    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/components/about/about.component.js"></script>
+    <script src="app/components/alboms-list/alboms-list.service.js"></script>
+    <script src="app/components/alboms-list/alboms-list.component.js"></script>
+    
+   
+    <script src="app/components/alboms-list/content-edit.component.js"></script>
+    <script src="app/components/movie-rating/movie-rating.component.js"></script>
+    <script src="app/components/my-header/my-header.component.js"></script>
+
+    <script src="app/components/alboms-list/albom-detail.component.js"></script>
+    <script src="app/components/alboms-list/movie-list-edit.component.js"></script>
+
+</body>
+</html>
