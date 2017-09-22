@@ -1,5 +1,4 @@
 (function(){
-
   angular
     .module('myAlbomsApp')
     .component('about', 

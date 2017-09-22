@@ -1,3 +1,5 @@
+For clean local storage go to path: /clear_local_storage
+
 Requirements:
 - Angular 1.5.*
 - Webpack

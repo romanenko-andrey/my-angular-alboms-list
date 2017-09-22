@@ -26,6 +26,8 @@ function albomDetailController($state, albomsListService) {
   self.playMovie = playMovie;
   self.close = close;
 
+  self.showDetailInfo = ($index) => self.row === $index;
+
   function close(){
     self.editedMovie = undefined; 
     self.selectedMovie = undefined;
@@ -75,6 +77,8 @@ function albomDetailController($state, albomsListService) {
   function playMovie(movie){
     $state.go('view', {movie: movie})
   }
+
+
 }
 
 })();

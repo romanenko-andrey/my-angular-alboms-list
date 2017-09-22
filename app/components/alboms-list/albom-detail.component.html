@@ -11,7 +11,7 @@
   <br />
 
   <div ng-if="!$ad.empty()">
-    <table id="movies-table" ng-mouseleave="$ad.row=-1">
+    <table class="list-table" ng-mouseleave="$ad.row=-1">
       <tr ng-mouseover="$ad.row=-1" >
         <th>#</th>
         <th ng-repeat="col in $ad.columns" ng-click="$ad.sort(col)" class="sortable"
@@ -21,11 +21,20 @@
  
 
       <tr ng-repeat="movie in $ad.albom.list | orderBy: $ad.orderBy"
-              ng-class-odd="'row-shadow'" ng-mouseover="$ad.row=$index" ng-click="$ad.selectMovie(movie)"
-              ng-class="{'hover-row': $ad.row===$index, 'selected-row': $ad.selectedAlbom === movie}">
+          ng-class-odd="'row-shadow'"
+          ng-mouseover="$ad.row=$index" 
+          ng-click="$ad.selectMovie(movie)"
+          ng-class="{'hover-row': $ad.row===$index, 'selected-row': $ad.selectedAlbom === movie}">
+
           <td>{{ $index+1 }}</td>
-          <td class="text"><span>{{ movie.title }}</span></td>
-          <td class="text"><span>{{ movie.about }}</span></td>
+          <td class="text">
+            <span ng-hide="$ad.showDetailInfo($index)">{{ movie.title }}</span>
+            <p ng-show="$ad.showDetailInfo($index)" class="animate-show">{{ movie.title }}</p>
+          </td>
+          <td class="text">
+            <span ng-hide="$ad.showDetailInfo($index)">{{ movie.about }}</span>
+            <p ng-show="$ad.showDetailInfo($index)" class="animate-show">{{ movie.about }}</p>
+          </td>
           <td class="text"><span>{{ movie.url }}</span></td>
           <td>
             <movie-rating class="show-star" value="movie.rating">

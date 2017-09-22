@@ -16,25 +16,25 @@
 
 
   function albomsListController(albomsListService) {
-
     var self = this;
 
     self.orderBy = 'name';
     self.sortClass= 'sort-asc';
     self.columns = ['title', 'about', 'size', 'rating'];
-
+    self.empty = true;
+    self.incorectName = true;
 
    // functions
     self.sort = sort;
     self.close = close;
-    self.save = save;
     self.selectAlbom = selectAlbom;
     self.editAlbom = editAlbom;
     self.deleteAlbom = deleteAlbom;
     self.addAlbom = addAlbom;
-    self.empty = true;
-    self.incorectName = true;
     self.newNameChange = doChange; 
+
+    self.showDetailInfo = ($index) => self.row === $index;
+    self.save = () => self.editedAlbom = undefined;
 
     self.$onInit = function() {
       albomsListService.getAlboms().then(function() {
@@ -78,14 +78,6 @@
       self.editedAlbom = undefined;
     }
 
-    function save() {
-      self.editedAlbom = undefined;
-    }
-
-    function empty() {
-      return self.allboms.length === 0
-    }
-
     function deleteAlbom(albom){
       if (!window.confirm("Do you really want to delete it?")) 
         return;
@@ -102,6 +94,7 @@
       self.newNameChange();
       self.empty = false;
     }
+
   }
 
 })();

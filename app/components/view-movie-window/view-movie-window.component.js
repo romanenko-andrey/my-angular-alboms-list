@@ -9,7 +9,10 @@
     })
     .config(viewMovieConfig);
 
-  function viewMovieConfig($stateProvider) {
+
+  function viewMovieConfig($sceProvider, $stateProvider) {
+    $sceProvider.enabled(false);
+
     $stateProvider.state('view', {
       url: '/view',
       template: '<view-movie-window></view-movie-window>',
@@ -19,9 +22,10 @@
     });
   }
 
-  function viewMovieController($state){
+  function viewMovieController($state, $sce){
     var self = this;
     self.movie = $state.params.movie;
+    self.movieURL = $sce.trustAsResourceUrl(self.movie.url);
   }
 
 })();
