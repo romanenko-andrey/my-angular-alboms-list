@@ -8,14 +8,12 @@ angular.module('myAlbomsApp')
     bindings: {
       content: '=',
       onClose: '&',
-      onSave: '&',
     }
   });
 
 function movieListEditController() {
   $ctrl = this;
   $ctrl.close = () => $ctrl.onClose();
-  $ctrl.save = () => $ctrl.onSave();
 }
 
 })();

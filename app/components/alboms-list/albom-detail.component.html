@@ -3,8 +3,9 @@
   <h3> Albom: <strong> {{ $ad.albom.title }} </strong> </h3>
 
   <div>
-    <input id="new-movie-name" type="text" ng-model="$ad.newMovieName" ng-change="$ad.newNameChange()"> 
-    <button type="button" class="btn btn-success" ng-class="{'disabled': $ad.incorectName }" ng-click="$ad.addMovie()">New movie</button>
+    <input type="text" ng-model="$ad.newMovieName" placeholder="movie title"> 
+    <input type="text" ng-model="$ad.newMovieURL" placeholder="movie URL"> 
+    <button type="button" class="btn btn-success" ng-click="$ad.addMovie()">New movie</button>
   </div>
   
   <br />
@@ -25,6 +26,7 @@
           <td>{{ $index+1 }}</td>
           <td class="text"><span>{{ movie.title }}</span></td>
           <td class="text"><span>{{ movie.about }}</span></td>
+          <td class="text"><span>{{ movie.url }}</span></td>
           <td>
             <movie-rating class="show-star" value="movie.rating">
               <span class="glyphicon glyphicon-star"></span>
@@ -32,14 +34,14 @@
           </td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-default" ng-click="$ad.playMovie($event, movie)">
+              <button class="btn btn-default" ng-click="$ad.playMovie(movie)">
                   <span class="glyphicon glyphicon-play"></span>
               </button>
               <button class="btn btn-default" ng-click="$ad.editMovie($event, movie)">
                   <span class="glyphicon glyphicon-edit"></span>
               </button>
 
-              <button class="btn btn-default" ng-click="$ad.deleteMovie(albom)">
+              <button class="btn btn-default" ng-click="$ad.deleteMovie($ad.albom, movie)">
                   <span class="glyphicon glyphicon-trash"></span>
               </button>
             </div>
@@ -48,7 +50,7 @@
     </table>
   </div>
 
-  <movie-list-edit content="$ad.editedMovie"></movie-list-edit>
+  <movie-list-edit content="$ad.editedMovie" on-close="$ad.close()"></movie-list-edit>
   </br>
   </br>
 </section>

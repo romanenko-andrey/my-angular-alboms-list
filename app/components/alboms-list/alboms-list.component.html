@@ -4,16 +4,15 @@
   <section class='left-block'>
 
     <div>
-        <input id="new-albom-name" type="text" ng-model="$ctrl.newAlbomName" ng-change="$ctrl.newNameChange()"> 
+        <input id="new-albom-name" type="text" ng-model="$ctrl.newAlbomName" ng-change="$ctrl.newNameChange()" placeholder="enter new albom name here"> 
         <button type="button" class="btn btn-success" ng-class="{'disabled': $ctrl.incorectName }" ng-click="$ctrl.addAlbom()">New albom</button>
     </div>
     <br />
 
     <div class="list-div" ng-if= "!$ctrl.empty">
       <div>
-
-            <label for="search-filter"> Filter by title: </label>
-            <input id="search-filter" type="text" ng-model="$ctrl.searchText">
+        <label for="search-filter"> Filter by title: </label>
+        <input id="search-filter" type="text" ng-model="$ctrl.searchText">
       </div>
 
       <table id="list-table" ng-mouseleave="$ctrl.row=-1">
@@ -49,11 +48,9 @@
             </td> 
           </tr>
       </table>
-    </div>
 
-
-    <div>
       <content-edit content="$ctrl.editedAlbom" on-close="$ctrl.close()" on-save="$ctrl.save()"></content-edit>
+     
     </div>
 
   </section>

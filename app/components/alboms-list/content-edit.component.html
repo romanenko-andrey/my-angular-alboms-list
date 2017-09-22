@@ -1,23 +1,15 @@
-<div class='container' ng-if="$ctrl.content">
-	<div class='row'>
-    <label class='col-12 col-sm-1' for='title-detail'> Title: </label>
-    <div class='col-12 col-sm-10'>
-      <input type="text" id="title-detail" ng-model="$ctrl.content.title">
-    </div>
-	</div>
-    <div class="row">
-	    <label class='col-12 col-sm-1' for='about-detail'> About: </label>  
-	    <div class='col-12 col-sm-10'>
-	       <input type="text" id='about-detail' ng-model="$ctrl.content.about">
-	    </div>   
-	</div>
-	<div class="row">
-	   <span class='col-4 col-sm-1'> <b>Rating: </b></span>  
-	   <div class='col-8 col-sm-8'>
-	   		<span uib-rating ng-model="$ctrl.content.rating" max="5" state-on="glyphicon-star" state-off="glyphicon-star-empty" aria-labelledby="custom-icons-1"></span>
-	   </div>
-	</div>  
+<div ng-if="$ctrl.content">
 
+    <label for='title-detail'> Title: </label>
+    <input type="text" id="title-detail" ng-model="$ctrl.content.title">
+     
+	  <label for='about-detail'> About: </label>  
+	  <input type="text" id='about-detail' ng-model="$ctrl.content.about">
+	  
+	  <span><b>Rating: </b></span>  
+	  <p uib-rating ng-model="$ctrl.content.rating" max="5" state-on="glyphicon-star" state-off="glyphicon-star-empty" aria-labelledby="custom-icons-1"></p>
+	  
+	
 	<div class="btn-group">
 		<button class="btn btn-default" ng-click="$ctrl.save()">
 		  SAVE <span class="glyphicon glyphicon-save"></span>
@@ -27,4 +19,6 @@
 		  DON'T SAVE <span class="glyphicon glyphicon-log-out"></span>
 		</button>
 	</div>
+	</br>
+	</br>
 </div>

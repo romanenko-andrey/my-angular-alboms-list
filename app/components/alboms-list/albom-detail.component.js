@@ -10,22 +10,26 @@ angular.module('myAlbomsApp')
     }
   });
 
-function albomDetailController(albomsListService) {
+function albomDetailController($state, albomsListService) {
   var self = this;
 
   self.orderBy = 'name';
   self.sortClass= 'sort-asc';
-  self.columns = ['title', 'about', 'rating'];
+  self.columns = ['title', 'about', 'url', 'rating'];
 
   self.sort = sort;
   self.empty = emptyCheck;
-
   self.selectMovie = selectMovie;
   self.editMovie = editMovie;
   self.deleteMovie = deleteMovie;
   self.addMovie = addMovie;
-  self.incorectName = true;
-  self.newNameChange = doChange; 
+  self.playMovie = playMovie;
+  self.close = close;
+
+  function close(){
+    self.editedMovie = undefined; 
+    self.selectedMovie = undefined;
+  }
 
 
   function sort(attribute) {
@@ -48,38 +52,28 @@ function albomDetailController(albomsListService) {
     return false
   }
 
-   function editMovie(ev, movie){
-      ev.stopPropagation();
-      self.editedMovie = movie;
-    }
+  function editMovie(ev, movie){
+    ev.stopPropagation();
+    self.editedMovie = movie;
+  }
 
   function selectMovie(movie) {
     self.editedMovie = undefined; 
     self.selectedMovie = movie;
   }
 
-  function deleteMovie(movie){
-    console.log('delete', movie);
-    //if (!window.confirm("Do you really want to delete it?")) 
-    //  return;
-    //albomsListService.deleteAlbom(albom);
-    //self.alboms = albomsListService.alboms;
-    //self.selectedAlbom = albomsListService.selectedAlbom = undefined;
-    //self.editedAlbom = undefined;
-    //self.alboms.length == 0 ? self.empty = true : self.empty = false;
+  function deleteMovie(albom, movie){
+    albomsListService.deleteMovie(albom, movie);
+    self.editedMovie = self.selectedMovie = undefined;
   }
 
   function addMovie(){
-    console.log('add movie ', self.newMovieName);
-    albomsListService.addMovieToCurrentAlbom(self.newMovieName);
-    self.newMovieName = '';
-    self.newNameChange();
-    //self.empty = false;
+    albomsListService.addMovieToCurrentAlbom(self.newMovieName, self.newMovieURL);
+    self.newMovieName = self.newMovieURL = '';
   }
 
-  function doChange() {
-    var nameRegex = /^[0-9a-zA-Zа-яА-Я]+\w*/
-    self.incorectName = !nameRegex.test(self.newMovieName);
+  function playMovie(movie){
+    $state.go('view', {movie: movie})
   }
 }
 
