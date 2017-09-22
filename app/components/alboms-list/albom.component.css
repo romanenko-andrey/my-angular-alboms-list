@@ -96,11 +96,8 @@ my-header{
     vertical-align: top;
 }
 
-.left-block{
-    width: calc(50% - 15px);   
-}
-.right-block{
-    width: calc(50% - 15px);
+.left-block, .right-block{
+    width: 100%;
 }
 
 .list-table{
@@ -115,9 +112,6 @@ my-header{
 
 
 @media screen and (max-width:1024px) {
-    .right-block, .left-block{
-        width: 100%;
-    }
     .list-table td.text {
         max-width:  130px;
     }
